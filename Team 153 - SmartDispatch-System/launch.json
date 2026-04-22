@@ -1,0 +1,31 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Run Demo (No MySQL needed)",
+            "request": "launch",
+            "mainClass": "com.project.service.DemoRunner",
+            "projectName": "SmartDispatch-System",
+            "console": "integratedTerminal"
+        },
+        {
+            "type": "java",
+            "name": "Run GUI Dashboard (needs MySQL)",
+            "request": "launch",
+            "mainClass": "com.project.Main",
+            "projectName": "SmartDispatch-System",
+            "vmArgs": "--module-path \"${workspaceFolder}/../javafx-sdk-21.0.6/lib\" --add-modules javafx.controls,javafx.graphics",
+            "console": "integratedTerminal"
+        },
+        {
+            "type": "java",
+            "name": "Run CLI Mode (needs MySQL)",
+            "request": "launch",
+            "mainClass": "com.project.Main",
+            "args": "--cli",
+            "projectName": "SmartDispatch-System",
+            "console": "integratedTerminal"
+        }
+    ]
+}

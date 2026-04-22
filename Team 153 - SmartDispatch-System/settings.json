@@ -1,0 +1,10 @@
+{
+    "java.project.sourcePaths": ["src"],
+    "java.project.outputPath": "out",
+    "java.project.referencedLibraries": [
+        "c:/Users/Bhumika/OneDrive/Desktop/Buffer/mysql-connector-j-9.6.0/mysql-connector-j-9.6.0.jar",
+        "c:/Users/Bhumika/OneDrive/Desktop/Buffer/javafx-sdk-21.0.6/lib/javafx.base.jar",
+        "c:/Users/Bhumika/OneDrive/Desktop/Buffer/javafx-sdk-21.0.6/lib/javafx.controls.jar",
+        "c:/Users/Bhumika/OneDrive/Desktop/Buffer/javafx-sdk-21.0.6/lib/javafx.graphics.jar"
+    ]
+}
