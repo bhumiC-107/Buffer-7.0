@@ -126,7 +126,7 @@ java -cp "out;%MYSQL_JAR%" com.project.Main --cli
 
 ---
 
-## 🎮 Using the Dashboard
+## Using the Dashboard
 
 | Button                | Action                                                    |
 | --------------------- | --------------------------------------------------------- |
