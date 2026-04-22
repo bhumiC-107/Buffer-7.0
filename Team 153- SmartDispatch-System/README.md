@@ -1,39 +1,12 @@
+# Problem Statement
+
+Our project aims to design a *Real-Time Multi-Warehouse Delivery Optimizer* that determines the most optimal warehouse to fulfil any customer's order(s). The system will model warehouses and customers as a bipartite graph and computes the minimum-cost assignment between them based on factors such as distance, delivery time, and cost.
+
+It will basically simulate how large platforms like Amazon allocate orders across warehouses to achieve efficient and cost-effective delivery operations.
+
 # SmartDispatch — Real-Time Multi-Warehouse Delivery Optimizer
 
 A Java-based delivery optimization system that uses **graph algorithms** and **optimal assignment** to determine the best warehouse-to-customer pairings in a multi-warehouse delivery network.
-
----
-
-## Project Structure
-
-```
-SmartDispatch-System/
-├── sql/
-│   └── schema.sql                          # MySQL schema + sample data
-├── src/
-│   └── com/project/
-│       ├── Main.java                       # Application entry point (GUI/CLI)
-│       ├── database/
-│       │   └── DatabaseManager.java        # JDBC operations (MySQL)
-│       ├── model/
-│       │   ├── Warehouse.java              # Warehouse data model
-│       │   ├── Customer.java               # Customer data model
-│       │   ├── Edge.java                   # Graph edge model
-│       │   └── Assignment.java             # Warehouse→Customer assignment
-│       ├── graph/
-│       │   ├── Graph.java                  # Adjacency list graph
-│       │   └── BipartiteGraph.java         # Bipartite graph (W↔C)
-│       ├── algorithm/
-│       │   ├── DijkstraAlgorithm.java      # Shortest path (min-heap)
-│       │   └── HungarianAlgorithm.java     # Min-cost matching
-│       ├── service/
-│       │   ├── CostMatrixService.java      # Dijkstra → cost matrix
-│       │   ├── AssignmentService.java      # Assignment builder
-│       │   └── DeliveryOptimizer.java      # Pipeline orchestrator
-│       └── ui/
-│           └── DashboardApp.java           # JavaFX visualization
-└── README.md
-```
 
 ---
 
@@ -67,72 +40,6 @@ DATABASE → GRAPH → DIJKSTRA → COST MATRIX → HUNGARIAN → OPTIMAL ASSIGN
 
 ---
 
-## How to Run
-
-### Step 1: Set Up Database
-
-```bash
-# Login to MySQL
-mysql -u root -p
-
-# Run the schema file
-source /path/to/SmartDispatch-System/sql/schema.sql;
-```
-
-This creates the `delivery_optimizer` database with:
-
-- `warehouses` table (5 warehouses across Delhi)
-- `customers` table (10 customers with varying priorities)
-- `assignments` table (populated by the optimizer)
-
-### Step 2: Configure Database Connection
-
-Edit `src/com/project/database/DatabaseManager.java`:
-
-```java
-private static final String URL = "jdbc:mysql://localhost:3306/delivery_optimizer";
-private static final String USER = "root";
-private static final String PASSWORD = "your_password_here";
-```
-
-### Step 3: Compile
-
-```bash
-cd SmartDispatch-System
-
-# Set paths (adjust for your system)
-set JAVAFX_LIB=..\javafx-sdk-21.0.6\lib
-set MYSQL_JAR=..\mysql-connector-j-9.6.0\mysql-connector-j-9.6.0.jar
-
-# Compile all Java files
-javac -cp "%JAVAFX_LIB%\javafx.base.jar;%JAVAFX_LIB%\javafx.controls.jar;%JAVAFX_LIB%\javafx.graphics.jar;%MYSQL_JAR%" -d out src\com\project\model\*.java src\com\project\database\*.java src\com\project\graph\*.java src\com\project\algorithm\*.java src\com\project\service\*.java src\com\project\ui\*.java src\com\project\Main.java
-```
-
-### Step 4: Run
-
-**GUI Mode (JavaFX Dashboard):**
-
-```bash
-java --module-path "%JAVAFX_LIB%" --add-modules javafx.controls,javafx.graphics -cp "out;%MYSQL_JAR%" com.project.Main
-```
-
-**Console Mode (CLI — no JavaFX needed):**
-
-```bash
-java -cp "out;%MYSQL_JAR%" com.project.Main --cli
-```
-
-> **Note**: The JavaFX SDK 21.0.6 is included in the project directory as `javafx-sdk-21.0.6`. If you need a different version, download from [Gluon](https://gluonhq.com/products/javafx/).
-
----
-
-## Using the Dashboard
-
-| Button                | Action                                                    |
-| --------------------- | --------------------------------------------------------- |
-| ** Run Optimization** | Runs the full pipeline and displays results instantly     |
-| ** Reset**            | Clears all assignments and resets customers to PENDING    |
-| ** Simulate**         | Runs real-time simulation (assignments appear one-by-one) |
 
 ### Dashboard Features
 
@@ -189,13 +96,3 @@ java -cp "out;%MYSQL_JAR%" com.project.Main --cli
 
 ---
 
-## Packages
-
-| Package                 | Purpose                                              |
-| ----------------------- | ---------------------------------------------------- |
-| `com.project.model`     | Data classes (Warehouse, Customer, Edge, Assignment) |
-| `com.project.database`  | JDBC database operations                             |
-| `com.project.graph`     | Graph data structures (adjacency list, bipartite)    |
-| `com.project.algorithm` | Dijkstra & Hungarian algorithm implementations       |
-| `com.project.service`   | Business logic (cost matrix, assignment, optimizer)  |
-| `com.project.ui`        | JavaFX visualization dashboard                       |
