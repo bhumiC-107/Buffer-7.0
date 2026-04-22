@@ -4,6 +4,8 @@ Our project aims to design a *Real-Time Multi-Warehouse Delivery Optimizer* that
 
 It will basically simulate how large platforms like Amazon allocate orders across warehouses to achieve efficient and cost-effective delivery operations.
 
+Video link  : https://drive.google.com/file/d/1qyuX1vxi9U6tAy97SKj64J0UM_Eei-tN/view?usp=drive_link
+
 # SmartDispatch — Real-Time Multi-Warehouse Delivery Optimizer
 
 A Java-based delivery optimization system that uses **graph algorithms** and **optimal assignment** to determine the best warehouse-to-customer pairings in a multi-warehouse delivery network.
